@@ -1,0 +1,18 @@
+<apex:component >
+    <style>
+        .profileImage {
+            border:1px solid #CCCCCC;
+            margin-bottom:10px;         
+        }
+    </style>
+   <apex:attribute name="userid" type="String" required="true" description="User ID" />
+   <apex:attribute name="width" type="String" required="true" description="Width of Image" />
+   <apex:attribute name="height" type="String" required="true" description="Height of Image" />
+   <apex:attribute name="name" type="String" required="false" description="Optional name for tooltip" />
+   <!--  possible value as (T)humbnail to (P)ortrait -->
+   <apex:attribute name="imgType" type="String" required="false" description="Image Type" />
+   
+   <apex:outputlink value="/{!userid}">
+         <apex:image value="/userphoto?id={!userid}&v=1&s={!imgType}" height="{!height}" width="{!width}" title="{!name}"  styleClass="profileImage"/> 
+    </apex:outputlink>            
+</apex:component>

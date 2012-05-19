@@ -1,0 +1,13 @@
+<apex:page >
+<h1>Test Page</h1>
+  <div>
+             <a href="javascript:void(location.href='http://www.pdfspot.com/html-to-pdf-converter.aspx?url=' + escape(location.href)+'&pdf_name=' + escape('') + '&pdf_orientation=portrait&pdf_page_size=A4&scripts_enabled=true' )" 
+                              title="Convert HTML to PDF" style="font-family: Verdana;font-size: 12px; color: #4579ae; text-decoration: none">
+                    <img src="http://www.pdfspot.com/pdfimg.aspx" alt="Convert HTML to PDF" style="border-style: none" />&nbsp;Save As PDF 
+             </a>
+           
+                    <a href="http://www.pdfspot.com" title="HTML to PDF">Online HTML to PDF Converter</a>
+             
+</div>
+
+</apex:page>

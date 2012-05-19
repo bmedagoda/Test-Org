@@ -1,0 +1,114 @@
+<apex:component >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+<apex:attribute name="max" description="Maximum value" type="String" required="false"/>
+<apex:attribute name="min" description="Minimum value" type="String" required="false"/>
+<apex:attribute name="setValue" description="Set Value" type="String" required="false"/>
+<apex:attribute name="hiddenValue" description="Get Value" type="String" required="true" />
+<apex:attribute name="divId" description="Unique Id" type="String" required="true"/>
+<apex:attribute name="hId" description="Unique Id" type="String" required="true"/>
+<apex:attribute name="mId" description="Unique Id" type="String" required="true"/>
+<apex:attribute name="sId" description="Unique Id" type="String" required="true"/>
+
+
+<style type="text/css">
+.inc{cursor:pointer;}
+</style>
+
+<script type="text/javascript"> 
+var h=00;
+var m=00;
+var s=00;
+var colId;
+var time;
+var hValue;
+function decrement() {
+if(colId == '{!hId}'){
+if(h==00){
+        h=24;
+        document.getElementById('{!hId}').innerHTML = --h + ' :';
+    }
+    else{
+        document.getElementById('{!hId}').innerHTML = --h + ' :';
+    }
+}else if(colId == '{!mId}'){
+if(m==00){
+        m=60-15;
+        document.getElementById('{!mId}').innerHTML = m + ' :';
+    }
+    else{
+        m = m-15;
+        document.getElementById('{!mId}').innerHTML = m + ' :';
+    }
+}else if(colId == '{!sId}'){
+if(s==00){
+        s=60-15;
+        document.getElementById('{!sId}').innerHTML = s;
+    }
+    else{
+        s=s-15;
+        document.getElementById('{!sId}').innerHTML = s;
+    }
+}
+    
+    time=h+':'+m+':'+s; 
+    var hValue = document.getElementById('{!$Component.hField}');  
+    hValue.value = time;   
+}
+
+function increment() {
+if(colId == '{!hId}'){
+    if(h==23){
+        h=0;
+        document.getElementById('{!hId}').innerHTML = '00' + ' :';
+    }
+    else{
+        document.getElementById('{!hId}').innerHTML = ++h + ' :';
+    }
+}else if(colId == '{!mId}'){
+if(m==45){
+        m=00;
+        document.getElementById('{!mId}').innerHTML = '00' + ' :';
+    }
+    else{
+        m=m+15;
+        document.getElementById('{!mId}').innerHTML = m + ' :';
+    }
+}else if(colId == '{!sId}'){
+if(s==45){
+        s=00;
+        document.getElementById('{!sId}').innerHTML = '00';
+    }
+    else{
+        s=s+15;
+        document.getElementById('{!sId}').innerHTML = s;
+    }
+}
+    time=h+':'+m+':'+s; 
+    hValue = document.getElementById('{!$Component.hField}');  
+    hValue.value = time;    
+}
+$(document).ready(function () {      
+     $('#{!divId} td').click(function (event) {
+          var col = $(this).attr('id');
+          if(col=='{!hId}' || col=='{!mId}' || col=='{!sId}'){ colId = col;}
+
+     });
+ });
+
+</script>
+    <table id="{!divId}" cellspacing='0' cellpadding='0' border="0" onclick="column(event)">
+        <tr> 
+            <td rowspan="2" id="{!hId}" >00 : </td>
+            <td rowspan="2" id="{!mId}" >00 : </td> 
+            <td rowspan="2" id="{!sId}" >00</td>
+            <td rowspan="2">&nbsp;&nbsp;</td>
+            <td><div class="inc" onclick="increment();" dir="Increment">&#9650;</div></td>
+        </tr>
+        <tr> 
+            <td><div class="inc" onclick="decrement();" dir="Decrement">&#9660;</div></td>
+        </tr>
+    </table> 
+    <div id="{!divId}hField">
+    <apex:inputHidden id="hField" value="{!hiddenValue}"/>  
+    </div> 
+</apex:component>

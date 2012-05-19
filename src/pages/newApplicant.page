@@ -1,0 +1,51 @@
+<apex:page standardStylesheets="true" controller="viewApplicants">
+
+<script type='text/javascript'>
+    function doShow(element){
+        parafunction(document.getElementById(element).value);
+    }
+</script>
+
+<apex:pageBlock id="formblock">
+    <apex:form >
+        <apex:outputLabel >Select the status of the applicant</apex:outputLabel>
+        <apex:inputField id="stat" value="{!applicant.Status__c}">
+            <apex:actionSupport action="{!filterStatus}" event="onchange" rerender="tableblock"></apex:actionSupport>
+            
+        </apex:inputfield>
+    </apex:form> 
+</apex:pageBlock>
+
+
+<apex:pageBlock id="tableblock">
+  <apex:form >
+        <apex:pageblockTable value="{!wraplist}" var="apps">
+       
+            <apex:column headerValue="Applicant Name">
+                <apex:outputText value="{!apps.app.Name__c}"/>
+            </apex:column>
+        
+            <apex:column headerValue="Applicant Status">
+                <apex:outputText value="{!apps.app.Status__c}"/>
+            </apex:column>
+        
+            <apex:column headerValue="To next stage?" >
+                <apex:inputCheckbox id="nextStage" value="{!apps.checked}" rendered="{!apps.app.Status__c == 'New'||apps.app.Status__c == 'Short Listed'||apps.app.Status__c =='Scheduled'}">
+                </apex:inputcheckbox>
+            </apex:column>
+        
+        <apex:column headerValue="Interview Time"  >
+            <apex:inputField value="{!apps.app.Interview_Time__c}" rendered="{!apps.app.Status__c == 'Short Listed'||apps.app.Status__c == 'Scheduled'}" />
+            <apex:commandButton action="{!setInterViewTime}" value="Update" rendered="{!apps.app.Status__c == 'Short Listed'||apps.app.Status__c == 'Scheduled'}" >
+                <apex:param name="appName" value="{!apps.app.Id}" assignTo="{!appId}"/>
+                <apex:param name="appEmail" value="{!apps.app.Email_address__c}" assignTo="{!appEmail}"/>
+            </apex:commandButton>
+        </apex:column>
+       </apex:pageblockTable> 
+      <apex:commandButton action="{!changeStatus}" value="Modify Status" rendered="{!applicant.Status__c == 'New'}"/>
+  </apex:form> 
+</apex:pageBlock>
+
+<apex:outputLink value="{!url}" rendered="{!visible}">Applicants</apex:outputLink>
+
+</apex:page>

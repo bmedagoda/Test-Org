@@ -1,0 +1,15 @@
+<apex:component >
+	
+   <apex:attribute name="status" type="String" required="true" description="status" />
+   <apex:attribute name="width" type="String" required="false" description="Width of Image" />
+   <apex:attribute name="height" type="String" required="false" description="Height of Image" />
+   <apex:attribute name="name" type="String" required="false" description="Optional name for tooltip" />
+   
+   
+   <apex:image height="{!height}" width="{!width}" title="{!name}" value="{! IF(status == 'Online',URLFOR($Resource.messangerImages, '/messangerImages/Green.png'),
+   IF(status == 'Offline',URLFOR($Resource.messangerImages, '/messangerImages/White.png'),
+    IF(status == 'Invisible',URLFOR($Resource.messangerImages, '/messangerImages/White.png'),
+    IF(status == 'Do Not Disturb',URLFOR($Resource.messangerImages, '/messangerImages/Red.png'), 
+    URLFOR($Resource.messangerImages, '/messangerImages/White.png')) ) ) )}" />   
+             
+</apex:component>

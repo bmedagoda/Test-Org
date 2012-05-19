@@ -1,0 +1,9 @@
+<apex:page controller="PrintDemo" showHeader="{! !print}">
+    <h1>PrintDemo [{!created}]</h1><br/>
+    <em>Printing view: {!print}</em><br/>
+    <apex:outputLabel > පරික්ශන සටහන</apex:outputLabel>
+    
+    <apex:form id="theForm">
+        <c:Printme value="{!print}"/>        
+    </apex:form>
+</apex:page>

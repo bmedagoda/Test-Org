@@ -1,0 +1,4 @@
+<apex:page sidebar="false" controller="test10cont" >
+  dddd
+  {!names}
+</apex:page>

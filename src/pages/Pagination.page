@@ -1,0 +1,39 @@
+<apex:page controller="PajinateController">
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"/>
+<script src="{!$Resource.Pajinate1}"></script>
+<script>
+
+$.noConflict();
+
+jQuery(document).ready(function($){
+    $('.demo2').pajinate();
+});
+</script>
+
+<apex:outputpanel layout="block" styleclass="demo2">
+    <div class="page_navigation"></div>
+    <apex:outputtext value="Client-Side Paginated Repeat" styleclass="title block"></apex:outputtext>
+    <apex:outputpanel layout="block" styleclass="content">
+
+        <apex:repeat value="{!accounts}" var="account" rows="50">
+            <apex:outputpanel layout="block" styleclass="panel">
+
+                <apex:outputtext value="{!account.name}" styleclass="head block"></apex:outputtext>
+
+                <apex:outputpanel layout="block" styleclass="body">
+                    <apex:outputtext value="{!account.rating}" styleclass="item"></apex:outputtext>
+                    <apex:outputtext value="{!account.annualRevenue}" styleclass="item"></apex:outputtext>
+                    <apex:outputtext value="{!account.industry}" styleclass="item"></apex:outputtext>
+                </apex:outputpanel>
+
+            </apex:outputpanel>
+        </apex:repeat>
+
+    </apex:outputpanel>
+
+</apex:outputpanel>
+
+
+
+</apex:page>

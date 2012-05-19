@@ -1,0 +1,10 @@
+<apex:page controller="TestPage3Controller">
+  <h1>Test Page 3</h1><br />
+  <apex:outputLink value="{!url1}">{!name1}</apex:outputLink>
+  <apex:outputLabel >-></apex:outputLabel>
+  <apex:outputLink value="{!url2}">{!name2}</apex:outputLink>
+  <apex:outputLabel >-></apex:outputLabel>
+  <apex:outputLink value="{!currentPage}">{!pageName}</apex:outputLink>
+  
+  <c:BreadCrumbs PreviousURL1="https://c.ap1.visual.force.com/apex/TestPage2" PreviousName1="Test2" PreviousURL2="https://c.ap1.visual.force.com/apex/TestPage1" PreviousName2="Test1"/>  
+</apex:page>

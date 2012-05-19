@@ -1,0 +1,28 @@
+<apex:component >
+    <apex:attribute name="value" type="Boolean" description="TODO: Describe me"/>
+    
+    <apex:outputPanel rendered="{! !value}">
+        <apex:inputHidden id="printView" value="{!value}"/>
+        
+        <script>
+        function printMe() {                
+            var printViewInput = document.getElementById('{!$Component.printView}');
+            var form = printViewInput.form;
+    
+            form.target = 'printWindow';
+            printViewInput.value = true;
+            
+            var printWindow = window.open('_blank', 'printWindow', 'menubar=1,resizable=1,width=600,height=800');
+            form.submit();
+        }
+        </script>
+        <apex:outputLink onclick="printMe(); return false">Print Me</apex:outputLink>
+    </apex:outputPanel>
+    
+    <apex:outputPanel rendered="{!value}">
+        <script>
+        window.print();
+        window.close();
+        </script>
+    </apex:outputPanel>
+</apex:component>

@@ -1,0 +1,324 @@
+<apex:page controller="ChatterMessangerController" action="{!init}" sidebar="true" >
+
+  <style>
+      .leftContent {
+        float:left;
+        overflow:hidden;
+        width:310px;
+        height:600px;
+     }
+     
+     .rightContent {
+        float:left;
+        overflow:hidden;
+        width:500px;
+        height:600px;
+     }
+     
+      .aboutMeContent {
+        -moz-background-clip:border;
+        -moz-background-inline-policy:continuous;
+        -moz-background-origin:padding;
+        -moz-border-radius-topleft:5px;
+        -moz-border-radius-topright:5px;
+        -moz-border-radius-bottomleft:5px;
+        -moz-border-radius-bottomright:5px;
+        background:#FFFFF url(/img/alohaSkin/feeds/feedbg.png) repeat-x scroll left top;
+        padding-top:2px;        
+        height:80px;
+        border-right-style:groove;
+        border-left-style:groove;
+        border-bottom-style:groove;
+        margin-left:5px;  
+        width:160px;      
+        }
+        
+     .aboutMeContentRight {
+        -moz-background-clip:border;
+        -moz-background-inline-policy:continuous;
+        -moz-background-origin:padding;
+        -moz-border-radius-topleft:5px;
+        -moz-border-radius-topright:5px;
+        -moz-border-radius-bottomleft:5px;
+        -moz-border-radius-bottomright:5px;
+        background:#FFFFF url(/img/alohaSkin/feeds/feedbg.png) repeat-x scroll left top;
+        padding-top:2px;        
+        height:80px;
+        border-right-style:groove;
+        border-left-style:groove;
+        border-bottom-style:groove;
+        margin-left:5px;  
+        width:200px;    
+       }
+        
+        .divContent {
+        -moz-background-clip:border;
+        -moz-background-inline-policy:continuous;
+        -moz-background-origin:padding;
+        -moz-border-radius-topleft:5px;
+        -moz-border-radius-topright:5px;
+        -moz-border-radius-bottomleft:5px;
+        -moz-border-radius-bottomright:5px;
+        background:#FFFFF url(/img/alohaSkin/feeds/feedbg.png) repeat-x scroll left top;
+        padding-top:2px;
+        width:300px;
+        height:400px;
+        border-right-style:groove;
+        border-left-style:groove;
+        border-bottom-style:groove;
+        margin-left:10px;        
+        }
+        
+        .divContent1 {
+            margin-left:-12px;
+            padding-top:2px;
+        }
+        
+        .chatContentStyle {
+            -moz-background-clip:border;
+            -moz-background-inline-policy:continuous;
+            -moz-background-origin:padding;
+            -moz-border-radius-topleft:5px;
+            -moz-border-radius-topright:5px;
+            -moz-border-radius-bottomleft:5px;
+            -moz-border-radius-bottomright:5px;
+            background:#FFFFF url(/img/alohaSkin/feeds/feedbg.png) repeat-x scroll left top;
+            border-right-style:groove;
+            border-left-style:groove;
+            border-bottom-style:groove;              
+            width:450px;
+            height:250px;
+            margin-left:-10px;
+            padding:5px 10px 0;
+        }
+        .messageContentStyle{
+            -moz-background-clip:border;
+            -moz-background-inline-policy:continuous;
+            -moz-background-origin:padding;
+            -moz-border-radius-topleft:5px;
+            -moz-border-radius-topright:5px;
+            -moz-border-radius-bottomleft:5px;
+            -moz-border-radius-bottomright:5px;
+            background:#FFFFF url(/img/alohaSkin/feeds/feedbg.png) repeat-x scroll left top;
+            border-right-style:groove;
+            border-left-style:groove;
+            border-bottom-style:groove;
+            width:450px;
+            height:50px;
+            margin-left:-10px;
+            padding:5px 10px 0;
+        }
+        
+        .contactDivStyle {
+             -moz-background-clip:border;
+            -moz-background-inline-policy:continuous;
+            -moz-background-origin:padding;
+            -moz-border-radius-topleft:5px;
+            -moz-border-radius-topright:5px;
+            -moz-border-radius-bottomleft:5px;
+            -moz-border-radius-bottomright:5px;
+            background:#FFFFF url(/img/alohaSkin/feeds/feedbg.png) repeat-x scroll left top;
+            border-top-style:groove;
+            border-right-style:groove;
+            border-left-style:groove;
+            border-bottom-style:groove;
+            width:278px;
+            height:100px;
+            margin-left:-10px;
+        }
+        
+      .messageSection {
+        width:200px;
+        height:115px;
+      }
+      
+      .contactTabStyle {
+          width:200px;
+      }
+      
+      .contactSecStyle {
+        margin-left:-10px;
+        margin-top:-17px;
+      }
+      
+      .defaultDivStyle {
+          width:200px;
+          height:134px;
+      }
+      
+      .columnMouseOver {
+          background-color:#FFFFFF;    
+      }
+      
+      .panelColClass1 {
+        width:100px;
+      }
+      
+      .panelColClass2 {
+        width:200px;
+      }
+      
+      .panelColClass3 {
+        width:150px;
+      }
+      
+      .scrollable { 
+        max-height:370px;
+        overflow-x:hidden; 
+        overflow-y:auto; 
+        position:absolute; 
+        width:285px;
+      }
+            
+  </style>
+       
+  <apex:sectionHeader title="Chatter Messenger"/>
+  <apex:pageMessages id="messageSection" />
+      
+      <apex:panelGrid columns="2" columnClasses="leftContent,rightContent">
+         <apex:form id="leftForm"> 
+              <apex:actionFunction action="{!selectContactForChat}" name="showSelectedContact" rerender="rightPB,renderChatterMsgPanel" >
+                    <apex:param name="firstParam" assignTo="{!selectedUserId}" value="" />
+              </apex:actionFunction>
+              <apex:actionFunction action="{!resetUserStatus}" name="jsResetStatus" rerender="leftPB,renderChatterMsgPanel" />
+              <apex:actionFunction action="{!checkUserStatus}" name="jsStatusRefresh" rerender="leftForm,rightForm,renderChatterMsgPanel,refreshUserStatusPanel" />
+              
+          <apex:pageBlock id="leftPB"  >
+              <apex:pageBlockSection id="aboutUsPBS" columns="1" title="{!currentUser.Name}" collapsible="false"  >
+                  <apex:panelGrid columns="2" >             
+                      <apex:outputPanel style="whitespace:nowrap;" styleClass="divContent1">
+                           <c:ChatterMessengerImage userid="{!currentUserId}" width="110" height="110" imgType="F" name="{!selectedUser.Name}" />  
+                       </apex:outputPanel>
+                       <apex:outputPanel id="aboutUsPanel" >                                 
+                          <apex:inputTextarea value="{!currentUser.AboutMe}" styleClass="aboutMeContent" readonly="{!showEditBtn}"/>   
+                           
+                          <c:ChatterMessangerStatusImage status="{!currentChatterMgr.Status__c}" name="{!currentChatterMgr.Status__c}" width="12px" height="12px" />&nbsp;
+                          <apex:inputField value="{!currentChatterMgr.Status__c}" style="width:59px" onchange="jsResetStatus()" />
+                          <!-- 
+                          <apex:selectList id="statusSelect" style="width:50px;" value="{!}" size="1" > 
+                               <apex:selectOptions value="{!pageData.phaseOptions}"/>
+                          </apex:selectList>  -->
+                           
+                          <apex:commandButton value="Edit" id="editBtn" rendered="{!showEditBtn}" action="{!editAboutUs}" reRender="aboutUsPBS,renderChatterMsgPanel" style="float:right;" />
+                          <apex:commandButton value="Save" id="saveBtn" rendered="{!NOT(showEditBtn)}" action="{!updateAboutUs}" reRender="aboutUsPBS,renderChatterMsgPanel" style="float:right;" />
+                          <apex:commandButton value="Cancel" id="cancelBtn" rendered="{!NOT(showEditBtn)}" action="{!cancelAboutUs}" reRender="aboutUsPBS,renderChatterMsgPanel" style="float:right;" />
+                       </apex:outputPanel>                        
+                 </apex:panelGrid>                
+              </apex:pageBlockSection>
+              <apex:pageBlockSection columns="1" title="Contacts" collapsible="false" id="contactListPBS" > 
+                   <apex:outputPanel styleClass="scrollable">
+                       <table id="contactTable" cellspacing="0" cellpadding="0" class="list" style="margin-left:-10px;width:285px;">
+                           <tbody>
+                               <apex:repeat value="{!chatterContacts}" var="cc" >
+                                   <tr class="dataRow" onmouseout="if (window.hiOff){hiOff(this);}" onmouseover="if (window.hiOn){hiOn(this);}" onclick="showSelectedContact('{!cc.chatterUser.id}')">
+                                       <td class="divContent1">
+                                           <c:ChatterMessengerImage userid="{!cc.chatterUser.id}" name="{!cc.chatterUser.name}" width="30" height="30" imgType="T" />
+                                       </td>
+                                       <td style="width:225px;">
+                                           <c:ChatterMessangerStatusImage status="{!cc.status}" name="{!cc.status}" width="12px" height="12px" />&nbsp;
+                                           <apex:outputPanel style="width:220px"><apex:outputText value="{!cc.chatterUser.name}"></apex:outputText></apex:outputPanel>
+                                           <!--                                          
+                                           <br></br>
+                                           &nbsp;&nbsp;&nbsp;<apex:outputPanel ><apex:outputText value="{!cc.chatterUser.AboutMe}"></apex:outputText></apex:outputPanel>
+                                           -->
+                                       </td>
+                                     </tr>
+                                  </apex:repeat>  
+                                </tbody>
+                             </table>
+                       </apex:outputPanel>
+              </apex:pageBlockSection>
+          </apex:pageBlock>
+        </apex:form>
+        
+        <apex:form id="rightForm"> 
+            <apex:actionFunction action="{!chatterMessageRefersh}" name="jsMsgRefresh" rerender="leftPB,chatContent,messageSection,rightPBS1,infoPanel,renderChatterMsgPanel" />
+            <apex:actionFunction action="{!chatterMessageContentRefersh}" name="jsContentRefresh" rerender="chatContent,refreshChatContentPanel" />
+            
+          <apex:pageBlock id="rightPB" >
+              <apex:pageBlockSection id="rightPBS1" columns="1" title="{!IF(NOT(ISNULL(selectedUser)),selectedUser.Name, 'Select a contact to chat with.')}" 
+                                collapsible="false"  >
+                  <apex:outputPanel id="selectedInfoPanel" rendered="{!NOT(ISNULL(selectedUser))}">
+                      <apex:panelGrid columns="3" columnClasses="panelColClass1,panelColClass2,panelColClass3" >                          
+                          <apex:outputPanel style="whitespace:nowrap;" styleClass="divContent1">
+                               <c:ChatterMessengerImage userid="{!selectedUserId}" width="110" height="110" imgType="F" name="{!selectedUser.Name}"/>  
+                           </apex:outputPanel>
+                           <apex:outputPanel id="aboutUsPanel" style="width:210px" >                                 
+                              <apex:inputTextarea value="{!selectedUser.AboutMe}" styleClass="aboutMeContentRight" readonly="true"/>
+                              <apex:outputText value="{!selectedUser.Email}" style="float:right;"></apex:outputText>
+                           </apex:outputPanel>      
+                           <apex:outputPanel id="infoPanel" > 
+                                <apex:outputPanel >
+                                  <br><c:ChatterMessangerStatusImage status="{!selectedChatterMgr.Status__c}" name="{!selectedChatterMgr.Status__c}" width="12px" height="12px" />&nbsp;
+                                  <apex:outputText value="{!selectedChatterMgr.Status__c}"></apex:outputText></br>
+                                  <br><apex:outputText value="{!selectedUser.Name}"></apex:outputText></br>
+                                  <apex:outputText value="{!selectedUser.State}"></apex:outputText>
+                                  <apex:outputText value=", " rendered="{!NOT(ISNULL(selectedUser.State))}" ></apex:outputText>
+                                  <apex:outputText value="{!selectedUser.Country}" ></apex:outputText>
+                              </apex:outputPanel> 
+                           </apex:outputPanel>                     
+                     </apex:panelGrid> 
+                 </apex:outputPanel> 
+                 <apex:outputPanel id="defaultSelectPanel" rendered="{!ISNULL(selectedUser)}"> 
+                    <div class="defaultDivStyle">
+                        Select a contact to chat with.
+                    </div>
+                 </apex:outputPanel> 
+              </apex:pageBlockSection>
+              <!-- 
+              <apex:pageBlockSection id="rightPBS2" columns="1" title="Select a contact to chat with." collapsible="false" rendered="{!ISNULL(selectedUser)}" >
+                  
+              </apex:pageBlockSection>  -->
+              <apex:pageBlockSection columns="1" title="Chat History" collapsible="false" > 
+                  <apex:pageBlockSectionItem >
+                      <apex:outputPanel id="chatContent" >
+                          <apex:inputTextarea styleClass="chatContentStyle" value="{!chatHistoryMessage.Chat_History__c}" readonly="true" />  
+                                              
+                          <apex:commandButton value="Clear My Chat History" id="clearBtn" style="float:right;" action="{!clearMyChatHistory}"  reRender="chatContent,contactListPBS,renderChatterMsgPanel" />
+                          <apex:commandButton value="Refresh" id="refreshBtn" style="float:right;" action="{!refreshChatMessages}"  reRender="chatContent,contactListPBS,renderChatterMsgPanel" />
+                          <apex:commandButton value="Share" action="{!shareChat}" id="shareBtn" style="float:right;" rendered="{!showShareBtn}" />
+                      </apex:outputPanel>
+                  </apex:pageBlockSectionItem>
+                  <apex:pageBlockSectionItem dataTitle="Type Message" >
+                      <apex:outputPanel id="messageContent" >
+                          <apex:inputTextarea styleClass="messageContentStyle" value="{!chatMsgRecord.Message__c}" />                      
+                          <apex:commandButton value="Send" action="{!sendMessage}" id="sendBtn" style="float:right;" reRender="chatContent,messageContent,messageSection,renderChatterMsgPanel" />
+                      </apex:outputPanel>
+                  </apex:pageBlockSectionItem>
+              </apex:pageBlockSection>
+          </apex:pageBlock>
+          
+              <!--  code to repolling -->
+              <apex:outputPanel id="renderChatterMsgPanel" >    
+                    <apex:outputPanel id="renderChatterMsgInnerPanel" >
+                        <script type="text/javascript">
+                            //run after a delay 20 sec - if we try to execute immediately, the call isn t made properly
+                            setTimeout("jsMsgRefresh()", 20000);
+                        </script>
+                    </apex:outputPanel>             
+                </apex:outputPanel>
+                
+             <!--  code to refresh chatContent section -->
+              <apex:outputPanel id="refreshChatContentPanel" >    
+                    <apex:outputPanel id="refreshChatContentInnerPanel" rendered="{!allowChatContentRefresh}">
+                        <script type="text/javascript">
+                            //run after a delay of 5 sec- if we try to execute immediately, the call isn t made properly
+                            setTimeout("jsContentRefresh()", 5000);
+                        </script>
+                    </apex:outputPanel>             
+                </apex:outputPanel>
+                
+              <!--  code to refresh user status i.e online or offline  -->
+              <apex:outputPanel id="refreshUserStatusPanel" >    
+                    <apex:outputPanel id="refreshUserStatusInnerPanel" >
+                        <script type="text/javascript">
+                            //run after a delay of 30 = 1800,000 (Min) - if we try to execute immediately, the call isn t made properly
+                            setTimeout("jsStatusRefresh()", 1800000);
+                        </script>
+                    </apex:outputPanel>             
+                </apex:outputPanel>
+         </apex:form>
+     </apex:panelGrid>
+     
+     
+</apex:page>

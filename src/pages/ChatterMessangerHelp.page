@@ -1,0 +1,37 @@
+<apex:page sidebar="false" showHeader="true" >
+  <apex:sectionHeader title="About Chatter Messenger"/>
+    
+  <apex:pageBlock id="descriptionPB" >
+  
+      <apex:pageBlockSection id="aboutPBS" title="About" columns="1">
+          <apex:pageBlockSectionItem >
+          <p>Chatter messenger allow peoples in an organization to chat with each other. They can have one to one communication using chatter messenger without need of any external messenger from within there salesforce org.  Finally they have the option of sharing their chat to their chatter wall with a single click ‘share’. </p>
+          <p>All peoples in an organization are available as chatter messenger contacts. One can select any contact to chat with. If he is online, he can reply you back. If he is offline, he will receive you message when he gets online to chatter messenger app. </p>
+          <p> Selecting the Chatter Messenger tab login’s that user to chatter messenger app. Your will be then show as online to other Chatter Messenger user’s. One can change their status to either ‘OffLine’, ‘Do Not Disturb’ or ‘Invisible’ as required by the user. </p>
+          <p>If a user (contact) is idle for more than 30 minutes, he will logout and his status will be set as offline.  He can again get online by changing his status as ‘Online’.</p>
+          <p>Chatter messenger provide a real time chatting experience line any other messenger. This can help peoples who want to have one to one discussion with each other while working with in the salesforce org.  Later one if they feel to share their discussion they can share their chat or discussion on chatter wall. </p>
+          </apex:pageBlockSectionItem>
+      </apex:pageBlockSection> 
+      
+      <!-- 
+      <apex:pageBlockSection title="Getting Started" columns="1">
+          <br> <H2>Chatter Messenger Detail View</H2></br>
+          
+          <apex:pageBlockSectionItem >  
+              <apex:image height="400px" width="833px" title="Chatter Messenger Detail view" value="{!URLFOR($Resource.msgPageImages, '/msgImages/ChatterMessenger.JPG')}" />          
+          </apex:pageBlockSectionItem> 
+          
+          <br><H2>Chatter Messenger OffLine Chat View</H2></br>
+          <apex:pageBlockSectionItem >             
+              <apex:image height="400px" width="833px" title="Chatter Messenger OffLine Chat View" value="{!URLFOR($Resource.msgPageImages, '/msgImages/chatterMessanger2.JPG')}" />
+          </apex:pageBlockSectionItem>  
+          
+           <br><H2>Chatter Messenger Shared chat History message View</H2></br>
+          <apex:pageBlockSectionItem >             
+              <apex:image height="400px" width="833px" title="Chatter Messenger Shared chat History message View" value="{!URLFOR($Resource.msgPageImages, '/msgImages/chatterMshShare.JPG')}" />
+          </apex:pageBlockSectionItem>  
+          
+      </apex:pageBlockSection>
+     -->
+  </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,14 @@
+<apex:component controller="BreadCrumbsController">
+  <apex:attribute name="PreviousURL1" assignTo="{!prvUrl1}" type="String" required="false" description="previous url 2"></apex:attribute>
+  <apex:attribute name="PreviousName1" assignTo="{!prvName1}" type="String" required="false" description="previous name 2"></apex:attribute>
+  <apex:attribute name="PreviousURL2" assignTo="{!prvUrl2}" type="String" required="false" description="previous url 2"></apex:attribute>
+  <apex:attribute name="PreviousName2" assignTo="{!prvName2}" type="String" required="false" description="previous name 3"></apex:attribute>
+  
+  <apex:pageBlock >
+      <apex:outputLink value="{!PreviousURL2}" >{!PreviousName2}</apex:outputLink>
+      <apex:outputLabel >-></apex:outputLabel>
+      <apex:outputLink value="{!PreviousURL1}" >{!PreviousName1}</apex:outputLink>
+      <apex:outputLabel >-></apex:outputLabel>
+      <apex:outputLink value="{!currentUrl}">{!currentPagename}</apex:outputLink>
+  </apex:pageBlock>
+</apex:component>

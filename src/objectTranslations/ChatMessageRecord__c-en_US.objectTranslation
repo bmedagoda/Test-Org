@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ChatMessageRecord</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ChatMessageRecords</value>
+    </caseValues>
+    <fields>
+        <label><!-- Chat Message --></label>
+        <name>Chat_Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- From User --></label>
+        <name>From_User__c</name>
+        <relationshipLabel><!-- ChatMessageRecords (From User) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Message From --></label>
+        <name>Message_From__c</name>
+        <relationshipLabel><!-- ChatMessageRecords (Message From) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Message Post Date --></label>
+        <name>Message_Post_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Message --></label>
+        <name>Message__c</name>
+    </fields>
+    <fields>
+        <label><!-- Shared --></label>
+        <name>Shared__c</name>
+    </fields>
+    <fields>
+        <label><!-- To User --></label>
+        <name>To_User__c</name>
+        <relationshipLabel><!-- ChatMessageRecords (To User) --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

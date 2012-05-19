@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Applicant</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Applicants</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Applicants --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Email address --></label>
+        <name>Email_address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interview Time --></label>
+        <name>Interview_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager Email --></label>
+        <name>Manager_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Over due</masterLabel>
+            <translation><!-- Over due --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scheduled</masterLabel>
+            <translation><!-- Scheduled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Selected</masterLabel>
+            <translation><!-- Selected --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Short Listed</masterLabel>
+            <translation><!-- Short Listed --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>User__c</name>
+        <relationshipLabel><!-- Applicants --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- mylookup --></label>
+        <name>mylookup__c</name>
+    </fields>
+    <fields>
+        <label><!-- testDecimalText --></label>
+        <name>testDecimalText__c</name>
+    </fields>
+    <fields>
+        <label><!-- testDecimal --></label>
+        <name>testDecimal__c</name>
+    </fields>
+    <layouts>
+        <layout>Applicant Number Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Restricted Applicant Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>View Applicants</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Restricted Applicant View --></label>
+        <name>Restricted_Applicant_View</name>
+    </recordTypes>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

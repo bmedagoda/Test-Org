@@ -1,0 +1,3 @@
+{!Invoice_Statement__c.OwnerFullName} submitted for approval an Invoice Statement that
+totalled {!Invoice_Statement__c.Invoice_Value__c} on
+{!Invoice_Statement__c.LastModifiedDate}

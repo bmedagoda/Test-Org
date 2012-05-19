@@ -1,0 +1,45 @@
+<apex:page controller="popup" id="page1" sidebar="false" showHeader="false">
+
+  <apex:form id="form1">   
+   <apex:commandButton value="Show Pop up" action="{!showPopup}" rerender="popup"/>       
+    <apex:pageBlock >           
+     Ohhh my..... dummy stuff to show the popup is above content          
+     <p/>          
+      <apex:outputText value="Your Value Entered in popup is:" rendered="{!if(amar!=null,true,false)}"/>            
+      <apex:outputText value="{!amar}"/>         
+     <apex:inputHidden value="{!HiddenVal}"/>              
+    </apex:pageBlock>        
+      <apex:outputPanel id="popup">            
+    <apex:outputPanel styleClass="customPopup" layout="block" rendered="{!displayPopUp}">               
+    Nice one na....<br/><br/><br/>                
+    <apex:outputText value="Enter The Value"/>  
+   <apex:inputText value="{!HiddenVal}"/> 
+  <apex:commandButton value="Submit" action="{!closePopup}" rerender="form1"/>  
+</apex:outputPanel>        
+</apex:outputPanel>     
+</apex:form>     
+<style type="text/css">      
+ .customPopup{            
+   background-color: white; 
+  border-style: solid; 
+  border-width: 2px;
+  left: 50%;           
+  padding:10px;           
+  position: absolute;           
+  z-index: 9999;           
+   /* These are the 3 css properties you will need to tweak so the pop             
+   up displays in the center of the screen. First set the width. Then set            
+   margin-left to negative half of what the width is. You can also add            
+   the height property for a fixed size pop up.*/            
+  width: 500px;            
+  margin-left: -250px;           
+  top:100px; 
+  
+  body .bodyDiv {
+    background-color: #FFFFFF;
+    margin: 0 10px;
+    width: 200px;
+}       
+}    
+</style>
+</apex:page>

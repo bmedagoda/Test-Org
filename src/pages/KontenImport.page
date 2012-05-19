@@ -1,0 +1,16 @@
+<apex:page showHeader="false" sidebar="false" >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page: KontenImport
+  <apex:outputText >This is a output text field</apex:outputText>
+  <!-- End Default Content REMOVE THIS -->
+  <body>
+  <p>This is the body</p>
+  <a href='https://c.ap1.visual.force.com/apex/KontenImport' target="myIframe">About</a>
+  </body>
+  
+  <apex:iframe id="myIframe">
+    <apex:outputLabel >IFRame Text</apex:outputLabel>
+  </apex:iframe>
+  
+</apex:page>

@@ -1,0 +1,18 @@
+<apex:page renderAs="PDF">
+<html>
+ <head>
+  <style> 
+     body {font-family: Arial Unicode MS;}
+  </style>
+ </head>
+  <center>
+  <h1>This is a test</h1>
+ 
+    
+  <!-- Edited after 01st of December - Comment: I have added sri lankan charcters in the below h2 tag  -->
+
+  <h2>ස්‍රමපාසදඅසටබටපාුරඑාසමඑාිබබිාට</h2>
+  </center>
+  
+</html>
+</apex:page>

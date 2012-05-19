@@ -1,0 +1,23 @@
+<apex:page controller="ChatterGroupController">
+   <apex:form >
+        <apex:inputText value="{!status}" id="status" maxlength="100" /> 
+        <apex:commandLink style="button" value="Update User Status" action="{!doUserStatus}" />
+   </apex:form>
+   
+    <apex:image id="profileImage" url="{!profileImageUrl}" />
+    <chatter:follow entityId="{!UserId}"/>
+    <chatter:followers entityId="{!UserId}"/>
+    
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!NewsFeeds}" var="nf">
+            <apex:column value="{!nf.Body}" headerValue="Body"/>
+            <apex:column value="{!nf.CreatedBy.FirstName}" headerValue="First Name"/>
+            <apex:column value="{!nf.CreatedBy.LastName}" headerValue="Last Name"/>
+            <apex:column value="{!nf.Parent.Name}"/>
+            <apex:column value="{!nf.Title}"/>
+            
+            
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+
+</apex:page>

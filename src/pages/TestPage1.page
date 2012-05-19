@@ -1,0 +1,16 @@
+<apex:page controller="TestPage1Controller" >
+<apex:outputLabel >Test Page1</apex:outputLabel><br />
+<apex:outputLink value="{!currentPage}">{!pageName}</apex:outputLink>
+<apex:outputField value="{!letter.LetterBody__c}"/> <br />
+<apex:outputField value="{!letter.LetterText__c}"/> 
+  <apex:form >
+      <apex:commandButton value="Go To TestPage2" action="{!GoTestPage2}"/>
+     
+      <apex:commandButton value="save letter" action="{!saveLetter}"/>       
+
+  </apex:form>
+  
+    <c:BreadCrumbs />  
+    
+ 
+</apex:page>

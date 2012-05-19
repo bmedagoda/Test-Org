@@ -1,0 +1,13 @@
+<apex:page standardController="Contact" extensions="CommandButtonParamController">
+    <apex:form >
+ 
+        <apex:commandButton value="Process Nickname" action="{!processButtonClick}" rerender="hiddenBlock">
+            <apex:param name="nickName"
+                value="{!contact.firstname}"
+                assignTo="{!nickName}"/>
+        </apex:commandButton>
+ 
+        <apex:pageBlock id="hiddenBlock" rendered="false"></apex:pageBlock>
+ 
+    </apex:form>
+</apex:page>

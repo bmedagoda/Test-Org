@@ -1,0 +1,55 @@
+<apex:page >
+  <script src="http://code.jquery.com/jquery-1.7rc2.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+          $.fn.hideColleagusPopups = function(){
+              $(this).mouseover(function(){
+                     $(".colleague .popup").hide();
+                     $(this).parent().find(".popup").show();
+                     $(this).parent().find(".popup").mouseleave(function(){
+                             $(this).hide();
+                     });
+               }).mouseleave(function(){ 
+                    $(".colleague .popup").hide();
+                   if(!$(this).parent().find(".popup").is(':visible'))
+                       $(this).parent().find(".popup").hide();
+               });
+          };
+          $(".colleague span").each(function(){
+                $(this).hideColleagusPopups();
+          });
+     });
+  </script>
+
+<style >
+    .main_box { width:100%; height:100%; position:absolute;}
+    .anchor {position:absolute; top:10px; left:50px;}
+    .x-panel-body-noheader, .x-panel-mc .x-panel-body {border:none !important;}
+    .x-panel-body {border:none !important;}
+    .x-panel-body-noheader, .x-panel-mc .x-panel-body {border:none !important;}
+    .x-panel-body {border:none !important;}
+    .colleague { float:left; width:40px; margin:2px;position:relative;}
+    .colleague span a img { float:left; margin:0 0 2px 0; float:left;width:40px; height:40px; display:block;}
+    .colleague span label{ font-size:9px;word-wrap: break-word ;overflow: hidden;width: 40px; float:left; text-align:center;}
+    .colleague span a{ font-size:9px;word-wrap: break-word ;overflow: hidden;width: 40px; float:left; text-align:center; color:#111; text-decoration:none;font-weight:bold;}
+    .colleague span a:hover {text-decoration:none;color:#222;}
+    .popup {position:absolute; top:10px; left:2px;border:1px solid #bbb;border-bottom:3px solid #6AACD8 !important;box-shadow: 0px 5px 5px #888888;-moz-border-radius:5px;-webkit-border-radius:5px; background:#fff;display:none;z-index:999;}
+    .page_h { width:100px; height:52px; }
+    .page_h a {width:100%!important; display:inline; float:left; clear:both; text-align:left !important;}
+</style>
+
+    <div class="colleague">           
+            <apex:outputPanel >
+                    <!-- Add the Element you want to include here; eg. <apex:outputLink> or <apex:outputText> -->
+                    <apex:outputText >Hi</apex:outputText>
+                    <div id="<!-- Unique ID for the Div -->" class="popup"> 
+                        <div class="page_h" >
+                            <apex:outputText >popup</apex:outputText>
+                        </div> 
+                </div>
+                </apex:outputPanel> 
+        </div>
+
+
+</apex:page>

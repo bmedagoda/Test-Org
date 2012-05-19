@@ -1,0 +1,44 @@
+<apex:page showHeader="false" controller="ERController">
+<style type="text/css">
+div#root { margin-left: 50px; font-family: verdana }
+span#appTitle { font-size: 14pt; padding-left: 25px; vertical-align: 42% }
+table#header_table { border-bottom: thin solid #3366FF; width: 900px }
+table#footer { border-top: thin solid #3366FF; width: 900px }
+div#search { width: 150px; height: 50px; padding-left: 10px; margin-top: 20px; padding-top: 10px; background-color: #eeeeee; border: thin solid #dddddd}
+div#cloud { width: 160px; text-align: justify; padding-bottom: 10px }
+div#detail { width: 720px; margin: 10px; padding: 10px; }
+div#banner { width: 698px; background-color: #eeeeee; margin-bottom:20px; padding: 10px; border: thin solid #dddddd }
+#addTagsDialog div.overlay { top: 175px; left: 400px; position:relative; width: 500px; height: 150px; background-color: #ffffff; padding:0px 0px 0px 0px; border: thin solid #dddddd }
+#addTagsDialog { background-image:url(/servlet/servlet.FileDownload?file=015T0000000E82i); position: absolute; left: 0px; top: 0px; width:100%; height:100%; z-index: 1000; }
+#changeAccountDialog div.overlay { top: 50px; left: 30px; position:relative; width: 300px; height: 250px; background-color: #ffffff; padding:0px 0px 0px 0px; border: thin solid #dddddd }
+#changeAccountDialog { background-image:url(/servlet/servlet.FileDownload?file=015T0000000E82i); position: absolute; left: 0px; top: 0px; width:100%; height:100%; z-index: 1000; }
+td.n { color: #666666; padding-right: 30px; width: 100px }
+td.acctName { vertical-align: bottom }td.v { color: #000000; }
+td.vname2 { font-size: 10pt; font-weight: bold; color: #000000; }
+td.h { font-weight: bold; color: #ffffff; background-color: #008cad; padding-top: 5px; padding-bottom: 5px; padding-left: 5px }
+td.vname { font-weight: bold; font-size: 14pt; border-bottom: thin solid #dddddd; }div#profile { border: thin solid #dddddd}
+a.peer { font-size: 8pt }a:link { color:#3366FF; text-decoration:none; }
+a:visited { color:#3366FF; text-decoration:none; }
+a:hover { color:#3366FF; text-decoration:underline; }
+a:active { color:#3366FF; text-decoration:none; }
+
+<!-- cloud -->
+a.tag { font-family: verdana; padding: 2px 2px 2px 2px; letter-spacing: 1px; }
+a.size8 { font-size: 2.2em; }a.size7 { font-size:1.8em; }
+a.size6 { font-size: 1.6em; }a.size5 { font-size: 1.4em; }
+a.size4 { font-size: 1.2em; }a.size3 { font-size: 1.0em; }
+a.size2 { font-size: .8em; }a.size1 { font-size: .6em; }
+</style>
+
+        <div id="cloud">
+            <apex:outputPanel id="cloud_op">
+                <apex:repeat value="{!tagCloud}" var="tag">
+                    <span class="tag">
+                    <a class="size{!tag.Weight}" href="/search/TagSearchResults?tIdList=0t09000000001ue">{!tag.Value}</a> </span>
+                </apex:repeat>
+            </apex:outputPanel>
+        </div>
+
+            
+
+</apex:page>

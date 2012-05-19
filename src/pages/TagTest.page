@@ -1,0 +1,56 @@
+<apex:page controller="tagTest" showHeader="false">
+<apex:outputLink value="/home/home.jsp" target="_top">back to home</apex:outputLink>
+<script>
+function here(e) {
+        var t = e.target;
+        alert(e.target.textContent);
+}</script>
+  
+<p>DataList {!date} {!clicked} </p>
+
+<apex:outputText escape="false" value="{!table}" />
+<apex:dataList value="{!leads}" var="l" onclick="here(event);">     
+     {!l.name}, {!l.company}
+  </apex:dataList>
+
+  <h2>This is the test page for the rich visualforce components.</h2>
+  <br/><br/>DataTable/Column<br/>
+
+  <apex:dataTable id="theTable" value="{!leads}" var="l" border="2">  
+  <apex:facet name="caption">this is the caption of the table</apex:facet>
+    <apex:facet name="header">this is the header of the table</apex:facet>
+    <apex:facet name="footer">this is the footer of the table</apex:facet>
+
+    <apex:column onclick="alert('clicked');">
+      <apex:facet name="header">ID</apex:facet>
+      {!l.Id}
+      <apex:facet name="footer">column ID footer</apex:facet>
+    </apex:column>
+    <apex:column >
+        <apex:facet name="header">Name</apex:facet>
+        {!l.name}
+    </apex:column>
+    <apex:column ><apex:facet name="header">Company</apex:facet>{!l.company}</apex:column>
+  </apex:dataTable>
+
+  <br/><br/>TabPanel/Tab<br/>
+  <apex:tabPanel switchType="client">
+    <apex:tab label="one">Tab ONE Content</apex:tab>
+    <apex:tab label="two">Tab TWO Content</apex:tab>
+    <apex:tab label="three" disabled="true">Tab THREE Content</apex:tab>
+  </apex:tabPanel>
+
+  <br/><br/>Toolar/ToolbarGroup<br/>
+  <apex:toolbar >
+    <apex:toolbarGroup >ONE tab content</apex:toolbarGroup>
+    <apex:toolbarGroup >TWO</apex:toolbarGroup>
+    <apex:toolbarGroup >THREE</apex:toolbarGroup>
+  </apex:toolbar>
+
+  <br/><br/>PanelGrid<br/>
+  <apex:panelGrid columns="2" border="1" cellpadding="1" cellspacing="1">
+    <apex:outputText value="cell ONE"/>
+    <apex:outputText value="cell TWO"/>
+    <apex:outputText value="cell THREE"/>
+  </apex:panelGrid>
+</apex:page>

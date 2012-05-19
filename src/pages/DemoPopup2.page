@@ -1,0 +1,32 @@
+<apex:page >
+<style>
+#KontenImportHover {visibility:visible !important;}
+#topPane {height: 300px !important;width: 600px !important; background:#eee;}
+</style>
+<script type="text/javascript">
+function openpopup()
+{
+    var KontenWindow = window.open('{!URLFOR($Page.KontenImport)}','Konten','height = 100,width = 200,status =0,scrollbars =0,resizable =0');
+    var myDiv = document.getElementById('KontenImport1');  
+    var pos = getElementPosition(myDiv); 
+    alert(pos); 
+    KontenWindow.focus();
+}
+</script>
+
+<apex:form >
+<apex:commandButton id="KontenImport1" value="Konten Import" onmouseover="openpopup()"/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<a href="/apex/DemoPopup2" 
+    id="KontenImport1" 
+    onblur="LookupHoverDetail.getHover('KontenImport1').hide();" 
+    onfocus="LookupHoverDetail.getHover('KontenImport1', '/apex/KontenImport?retURL=%2FKontenImport1&isAjaxRequest=1').show();" 
+    onmouseout="LookupHoverDetail.getHover('KontenImport1').hide();" 
+    onmouseover="LookupHoverDetail.getHover('KontenImport1', '/apex/KontenImport?retURL=%2FKontenImport1&isAjaxRequest=1').show();"
+    target = "theIframe">popup link</a>
+</apex:form>
+
+<apex:iframe src="/apex/KontenImport" id="theIframe">
+</apex:iframe>
+
+</apex:page>

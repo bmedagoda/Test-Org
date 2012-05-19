@@ -1,0 +1,2 @@
+Applicant Name : {!Applicant__c.Name__c}
+Time : {!Applicant__c.Interview_Time__c}

@@ -1,0 +1,11 @@
+<apex:page controller="TestPage2Controller">
+<h1>Test Page2</h1><br />
+<apex:outputLink value="{!url}">{!previousPage}</apex:outputLink>
+<apex:outputLabel >-></apex:outputLabel>
+<apex:outputLink value="{!currentPage}">{!pageName}</apex:outputLink>
+<apex:form > 
+    <apex:commandButton value="Go to testPage3" action="{!GoTestPage3}"/><br />
+    
+</apex:form>
+  <c:BreadCrumbs PreviousURL1="https://c.ap1.visual.force.com/apex/TestPage1" PreviousName1="Test1"/>  
+</apex:page>
